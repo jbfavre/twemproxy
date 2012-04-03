@@ -13,7 +13,7 @@
 
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/sbin/nutcracker
+DAEMON=/usr/bin/nutcracker
 NAME=nutcracker
 DESC=nutcracker
 
