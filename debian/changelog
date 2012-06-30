@@ -1,11 +1,11 @@
-nutcracker (0.1.18-1~tooptee10+1) lucid; urgency=low
+nutcracker (0.1.18-1~tooptee12+1) precise; urgency=low
 
-  * dotBuntu build for Ubuntu 10.04 Lucid
+  * dotBuntu build for Ubuntu 12.04 Precise
 
  -- Jean Baptiste Favre <jbfavre@dotbuntu.org>  Sat, 30 Jun 2012 18:52:55 +0200
 
-nutcracker (0.1.16-1~tooptee10+1) UNRELEASED; urgency=low
+nutcracker (0.1.16-1~tooptee12+1) UNRELEASED; urgency=low
 
-  * dotBuntu build for Ubuntu 10.04 Lucid
+  * dotBuntu build for Ubuntu 12.04 Precise
 
  -- Jean Baptiste Favre <debian@jbfavre.org>  Fri, 30 Mar 2012 11:26:28 +0200
