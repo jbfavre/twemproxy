@@ -1,11 +1,17 @@
+nutcracker (0.1.20-1~tooptee10+1) lucid; urgency=low
+
+  * New upstream version
+
+ -- Jean Baptiste Favre <jbfavre@tooptee.org>  Sun, 25 Nov 2012 09:51:59 +0100
+
 nutcracker (0.1.18-1~tooptee10+1) lucid; urgency=low
 
-  * dotBuntu build for Ubuntu 10.04 Lucid
+  * New upstream version
 
  -- Jean Baptiste Favre <jbfavre@tooptee.org>  Sat, 30 Jun 2012 18:52:55 +0200
 
 nutcracker (0.1.16-1~tooptee10+1) lucid; urgency=low
 
-  * dotBuntu build for Ubuntu 10.04 Lucid
+  * build for Ubuntu 10.04 Lucid
 
  -- Jean Baptiste Favre <jbfavre@tooptee.org>  Fri, 30 Mar 2012 11:26:28 +0200
