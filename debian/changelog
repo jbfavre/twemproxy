@@ -1,3 +1,9 @@
+nutcracker (0.2.2-1~tooptee10+1) lucid; urgency=low
+
+  * New upstream version
+
+ -- Jean Baptiste Favre <ubuntu@jbfavre.org>  Thu, 24 Jan 2013 22:13:29 +0100
+
 nutcracker (0.1.20-1~tooptee10+1) lucid; urgency=low
 
   * New upstream version
