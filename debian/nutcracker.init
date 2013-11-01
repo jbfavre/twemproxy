@@ -48,45 +48,49 @@ test_config() {
         return $?
     fi
 }
+start() {
+    # Check if the MAX_FDS limit is set in /etc/default/nutcracker
+    if [ -n "${MAX_FDS}" ]; then
+        # Set the MAX_FDS limit
+        ulimit -n ${MAX_FDS}
+    fi
+    mkdir -p ${LOGDIR}
+    touch ${LOGFILE}
+    chown -R nobody:nogroup ${LOGDIR}
+    chmod 755 ${LOGDIR}
+    mkdir -p ${RUNDIR}
+    touch ${PIDFILE}
+    chown -R nobody:nogroup ${RUNDIR}
+    chmod 755 ${RUNDIR}
+    start-stop-daemon --start --quiet --umask 007 --pidfile ${PIDFILE} \
+        --chuid nobody:nogroup --exec ${DAEMON} -- ${DAEMON_OPTS} || true
+}
+stop() {
+    start-stop-daemon --stop --quiet --pidfile ${PIDFILE} \
+        --exec ${DAEMON} || true
+    rm -f ${RUNDIR}/*
+}
 
 case "$1" in
 
     start)
 	echo -n "Starting ${DESC}: "
         test_config
-        # Check if the MAX_FDS limit is set in /etc/default/nutcracker
-        if [ -n "${MAX_FDS}" ]; then
-            # Set the MAX_FDS limit
-            ulimit -n ${MAX_FDS}
-        fi
-        mkdir -p ${LOGDIR}
-	touch ${LOGFILE}
-        chown -R nobody:nogroup ${LOGDIR}
-	chmod 755 ${LOGDIR}
-	mkdir -p ${RUNDIR}
-	touch ${PIDFILE}
-	chown -R nobody:nogroup ${RUNDIR}
-	chmod 755 ${RUNDIR}
-	start-stop-daemon --start --quiet --umask 007 --pidfile ${PIDFILE} \
-            --chuid nobody:nogroup --exec ${DAEMON} -- ${DAEMON_OPTS} || true
+        start
         echo "${NAME}."
 	;;
 
     stop)
 	echo -n "Stopping ${DESC}: "
-	start-stop-daemon --stop --quiet --pidfile ${PIDFILE} \
-            --exec ${DAEMON} || true
-	echo "${NAME}."
-	rm -f ${RUNDIR}/*
+        stop
+        echo "${NAME}."
 	;;
 
     restart|force-reload)
         test_config
         echo -n "Restarting ${DESC}: "
-        start-stop-daemon --stop --quiet --pidfile ${PIDFILE} \
-            --exec ${DAEMON} || true
-        start-stop-daemon --start --quiet --umask 007 --pidfile ${PIDFILE} \
-            --chuid nobody:nogroup --exec ${DAEMON} -- ${DAEMON_OPTS} || true
+        stop
+        start
         echo "${NAME}."
 	;;
 
